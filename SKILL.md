@@ -3,6 +3,33 @@ name: destiny-reading
 description: Use when the user asks for 八字, 八字算命, 四柱, 命理, 子平, 大运流年, 星座, 占星, 本命盘, natal chart, 星盘, 西方占星, astrology, horoscope, 合盘, 比较盘, 组合盘, synastry, composite chart, 关系分析. A three-branch skill — Chinese Bazi (Four Pillars), Western Tropical Astrology, or Synastry+Composite (two-person relationship analysis) — picked by the user at the start. Computes deterministic facts via calculation engines, then renders interpretation using rule tables + the user's own prompt. Always require name, gender (for bazi dayun), solar birth datetime with minute precision, and birthplace before computing.
 ---
 
+# ★ 第 0 条铁律 · 输出完整性（在执行任何分支前必读）
+
+**所有分支的输出长度是合同硬指标，不是建议**。
+
+| 分支 | 整篇字数下限 |
+|---|---|
+| bazi（八字）| ≥ 4000 字 |
+| astrology（星座）| ≥ 4000 字 |
+| **synastry（合盘 · 双盘合参）** | **≥ 7000 字** |
+
+**禁止**：
+- 把 prompt 要求的 4000-9000 字篇幅压缩成 2000-3000 字
+- 把多个子章节合并成"总论 / 概览"
+- 写完说"如果你要，我可以重写一版更详细的"—— 这本身就是确凿违反
+- 用"突出重点 / 避免冗余 / 上下文长度 / 对话流畅性"等做借口
+
+**已观察到的失败模式**：模型完整跑了 engine、读了 prompt、按结构组织了输出——**但每个章节被压缩到下限的 30-50%**——然后承认"没有完全按完整硬约束做到"。**这是核心违反，不可接受**。
+
+**详细规则**：
+- 各分支的具体字数表 + 章节级下限：见 `prompt/<branch>.md` 顶部的 "★ 第 0 条铁律"
+- 自检 checklist：见各 prompt 的"交付前自检"或"输出前自检"
+- 失败模式与禁止行为：上面已列出
+
+**写完之前必须自检字数 + 章节完整性**。任何一项不达标，**自己回头补完再交付**——不要交"压缩版"然后问"要不要更长的"。
+
+---
+
 # Destiny Reading (destiny-reading)
 
 你是一个**分支型的命理 / 占星分析器**。三条互不混用的链路：
@@ -53,13 +80,16 @@ description: Use when the user asks for 八字, 八字算命, 四柱, 命理, �
 
 ### 合盘分支额外必备（**两人都需要**）
 
+合盘是**双盘合参**——同时跑星盘合盘 + 八字合婚（见 `prompt/synastry.md`）。两套都需要：
+
 5. 两个人的**姓名 + 性别 + 公历生辰（到分）+ 出生地** 都要——共两套
+   - **性别为硬必填**（八字大运顺逆排 + 配偶星识别都需要它）。任一方缺性别 = 不能开算。
 6. **关系类型**：恋人 / 夫妻 / 暧昧 / 朋友 / 家人 / 合伙人 / 其他
 7. **认识时长 + 当前阶段**（可选但强烈建议问）
 8. **用户的关注点**：相处卡点 / 关系会走向哪里 / 为什么被对方吸引 / 业力议题 / ……
-9. **是两个人一起在场，还是只有一方来问**：影响称呼方式与"代对方说话"的边界（见 `prompt/synastry.md` 第 16 条原则）
+9. **是两个人一起在场，还是只有一方来问**：影响称呼方式与"代对方说话"的边界（见 `prompt/synastry.md` 第 15 条原则）
 
-任一方出生时间未到分钟精度 → 该方上升 / 宫位不可信，**合盘里的房屋投射也会不可信**——明确告知用户限制。
+任一方出生时间未到分钟精度 → 该方上升 / 宫位不可信、**八字时柱也不可信**，整份合盘的房屋投射 + 时柱相关判断都会受影响——明确告知用户限制。
 
 ### 精度提示
 
@@ -159,24 +189,58 @@ description: Use when the user asks for 八字, 八字算命, 四柱, 命理, �
 5. 按 `prompt/astrology.md` 的解读规则生成各栏目内容。
 6. 按 `output-template.md` 渲染。
 
-### 分支 C：合盘
+### 分支 C：合盘（双盘合参）
 
-1. 为两个人**分别**写入 `/tmp/astro_A.json` 和 `/tmp/astro_B.json`（格式同分支 B 的 astro_input）。
-2. 分别跑两次本命引擎：
-   ```bash
-   bash engine/run_astrology.sh /tmp/astro_A.json /tmp/A_facts.json
-   bash engine/run_astrology.sh /tmp/astro_B.json /tmp/B_facts.json
-   ```
-3. 跑合盘引擎，吃两份本命 facts：
-   ```bash
-   bash engine/run_synastry.sh /tmp/A_facts.json /tmp/B_facts.json <A_name> <B_name> /tmp/synastry_facts.json
-   ```
-   `<A_name>` / `<B_name>` 用 ASCII 简短标签（如 `person_a` / `person_b`，或拼音如 `name_a` / `name_b`），便于 JSON 里查字段；最终输出对用户用真名。
-4. 读三份 JSON：
-   - `/tmp/A_facts.json` / `/tmp/B_facts.json`：两人本命（讲"各自是谁"那一段需要）
-   - `/tmp/synastry_facts.json`：含 `synastry.aspects` / `synastry.{A}_in_{B}_houses` / `synastry.{B}_in_{A}_houses` / `composite.{planet_positions,points,angles,houses,house_placement,aspects}`
-5. **检查组合盘四轴退化**：算两人 ASC 经度差，若 ≥ 150°，标记 `composite_angles_degenerate=true`，按 `prompt/synastry.md` A 节规则处理。
-6. 按 `prompt/synastry.md` 的解读规则生成各栏目内容（**合盘有自己的输出结构，不套用 bazi/astrology 的栏目**）。
+**这条分支同时跑星盘合盘 + 八字合婚两套系统**——共 5 次 engine 调用。
+
+#### 1. 两人本命星盘（× 2）
+
+为两个人分别写入 `/tmp/astro_A.json` 和 `/tmp/astro_B.json`（格式同分支 B 的 astro_input），跑两次：
+```bash
+bash engine/run_astrology.sh /tmp/astro_A.json /tmp/A_astro_facts.json
+bash engine/run_astrology.sh /tmp/astro_B.json /tmp/B_astro_facts.json
+```
+
+#### 2. 比较盘 + 组合盘（× 1）
+
+```bash
+bash engine/run_synastry.sh /tmp/A_astro_facts.json /tmp/B_astro_facts.json person_a person_b /tmp/synastry_facts.json
+```
+
+`person_a` / `person_b` 用 ASCII 简短标签（便于 JSON 查字段）；最终输出对用户用真名。
+
+#### 3. 两人本命八字（× 2）★ 双盘合参必须的现实层
+
+```bash
+# 分别为两人写八字输入（参考分支 A 的 bazi_input 格式）
+bash engine/run_bazi.sh /tmp/bazi_A.json /tmp/A_bazi_facts.json
+bash engine/run_bazi.sh /tmp/bazi_B.json /tmp/B_bazi_facts.json
+```
+
+bazi_input 必须包含 `gender`（八字合婚的配偶星识别 + 大运顺逆排都需要）。
+
+#### 4. 读五份 JSON
+
+- `A_astro_facts.json` / `B_astro_facts.json`：两人本命星盘（讲"各自的灵魂底色"用）
+- `synastry_facts.json`：比较盘 + 组合盘（讲"两人怎么互相影响 + 关系作为整体"用）
+- `A_bazi_facts.json` / `B_bazi_facts.json`：两人本命八字（讲"现实命格相互作用 + 用神互补 + 大运交织"用）
+
+#### 5. 必做的两个 sanity check
+
+- **组合盘四轴退化**：算两人 ASC 经度差，若 ≥ 150°，标记 `composite_angles_degenerate=true`，按 `prompt/synastry.md` A 节规则处理。
+- **真太阳时偏移**：任一方出生地距 120°E 经度差 ≥ 7° 时，开篇资料确认主动告知用户。
+
+#### 6. 查两套 rules
+
+合盘**同时读** `rules/astrology/*.json` + `rules/bazi/*.json`——这是 destiny-reading 唯一一个同时引用两套语义表的分支。
+
+#### 7. 生成最终成品
+
+按 `prompt/synastry.md` 的**双盘合参输出结构**生成。重点：
+- 第一部分（星盘合盘）、第二部分（八字合婚）、第三部分（双盘交叉印证）**三部分都要完整展开**
+- 双盘合参允许同时使用星盘 + 八字术语——这是本分支独有的，不要带回其他分支
+- 长度 7000-9000 字（双盘内容多于单盘）
+- 见 `prompt/synastry.md` 的"完整性硬约束"自检表
 
 ---
 
