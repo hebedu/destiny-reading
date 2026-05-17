@@ -50,3 +50,26 @@ wheels/
 
 # Logs
 *.log
+
+# 临时 / 个人 facts 输出（保留 examples/ 里的样例，不要 commit 你自己的）
+/tmp/
+tmp/
+*.tmp.json
+my_facts.json
+my_*_facts.json
+debug_*.json
+test_*.json
+
+# 个人笔记（fork 后自己的备注，不要 commit）
+MY_NOTES.md
+NOTES.md
+private/
+.private/
+
+# Ephemeris 文件以外的 swisseph 临时数据
+ephe_tmp/
+
+# 测试结果
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
