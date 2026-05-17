@@ -1,0 +1,15 @@
+{
+  "$schema_note": "12 星座语义。每个含 element / modality / ruler / keywords / sun_personality / moon_inner / asc_outer。Layer 2 按 facts.planet_positions[*].sign 与 angles 查这张表。",
+  "Aries":       { "zh": "白羊座", "element": "火", "modality": "Cardinal", "ruler": "Mars",   "keywords": ["开创", "冲劲", "直接", "竞争"], "sun_personality": "直接、有先手意识、好胜，行动先于思考", "moon_inner": "情绪反应快、易怒、需要主动出击才能平静", "asc_outer": "外在给人'利落、有进攻性'印象" },
+  "Taurus":      { "zh": "金牛座", "element": "土", "modality": "Fixed",    "ruler": "Venus",  "keywords": ["稳定", "感官", "占有", "节奏慢"], "sun_personality": "现实、重感官享受、节奏稳；不轻易动摇", "moon_inner": "情绪需要安全感、慢热、靠实物（食物/家）安抚", "asc_outer": "外在温和、有亲和力、显得'踏实'" },
+  "Gemini":      { "zh": "双子座", "element": "风", "modality": "Mutable",  "ruler": "Mercury", "keywords": ["好奇", "灵活", "信息", "多面"], "sun_personality": "好奇心强、信息处理快、需要多线刺激", "moon_inner": "情绪易随话题转换、聊天能消化情绪", "asc_outer": "外在显得聪明、健谈、有少年感" },
+  "Cancer":      { "zh": "巨蟹座", "element": "水", "modality": "Cardinal", "ruler": "Moon",   "keywords": ["照护", "家庭", "敏感", "记忆"], "sun_personality": "重情、念旧、保护欲强、对家庭议题敏感", "moon_inner": "情绪深、易共情、需要私人空间消化", "asc_outer": "外在显得温暖、有距离感、'家人型'" },
+  "Leo":         { "zh": "狮子座", "element": "火", "modality": "Fixed",    "ruler": "Sun",    "keywords": ["表达", "舞台", "慷慨", "自我"], "sun_personality": "需要被看见、有戏剧感、慷慨大方", "moon_inner": "情绪通过'被认可'稳定下来", "asc_outer": "外在自带光环、显得有自信与热度" },
+  "Virgo":       { "zh": "处女座", "element": "土", "modality": "Mutable",  "ruler": "Mercury", "keywords": ["细节", "服务", "分析", "完善"], "sun_personality": "讲方法、注重细节、容易自我批判", "moon_inner": "情绪靠'把事情整理清楚'来平复", "asc_outer": "外在显得干练、有秩序感、稍显克制" },
+  "Libra":       { "zh": "天秤座", "element": "风", "modality": "Cardinal", "ruler": "Venus",  "keywords": ["关系", "公平", "美感", "决策犹豫"], "sun_personality": "重关系平衡、有美感、决策慢", "moon_inner": "情绪靠和谐关系稳定；冲突难以独自消化", "asc_outer": "外在温和、有礼、显得'好相处'" },
+  "Scorpio":     { "zh": "天蝎座", "element": "水", "modality": "Fixed",    "ruler": "Pluto",  "keywords": ["深度", "占有", "转化", "极端"], "sun_personality": "情感深、有控制欲、忠诚但要求高", "moon_inner": "情绪极端、独自咀嚼、有掩藏倾向", "asc_outer": "外在显得深沉、有锐感、不易亲近" },
+  "Sagittarius": { "zh": "射手座", "element": "火", "modality": "Mutable",  "ruler": "Jupiter", "keywords": ["扩张", "理念", "远方", "乐观"], "sun_personality": "向往远方、有理念、不羁、乐观", "moon_inner": "情绪靠'看到更大的图景'缓解", "asc_outer": "外在显得开朗、有冲劲、随性" },
+  "Capricorn":   { "zh": "摩羯座", "element": "土", "modality": "Cardinal", "ruler": "Saturn", "keywords": ["责任", "长期", "权威", "克制"], "sun_personality": "目标导向、能延迟满足、重社会身份", "moon_inner": "情绪克制、'先把事做了'再处理感受", "asc_outer": "外在显得成熟、有距离感、可靠" },
+  "Aquarius":    { "zh": "水瓶座", "element": "风", "modality": "Fixed",    "ruler": "Uranus", "keywords": ["独立", "理念", "群体", "疏离"], "sun_personality": "独立、有理念、看重'与众不同'", "moon_inner": "情绪靠理性距离消化、不擅长依附", "asc_outer": "外在显得知性、特别、有点'不在场感'" },
+  "Pisces":      { "zh": "双鱼座", "element": "水", "modality": "Mutable",  "ruler": "Neptune", "keywords": ["共情", "梦幻", "界限模糊", "艺术"], "sun_personality": "共情强、有艺术感、界限模糊", "moon_inner": "情绪如海绵、易吸收他人情绪", "asc_outer": "外在显得柔软、梦幻、有诗意" }
+}

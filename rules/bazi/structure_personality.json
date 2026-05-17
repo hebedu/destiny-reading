@@ -1,0 +1,64 @@
+{
+  "$schema_note": "格局 → 性格 / 事业 / 财运的语义映射。Layer 2 解读时按 analysis.structure 查这张表。",
+  "正格": {
+    "扶抑正格": {
+      "core_logic": "日主有根有源、但有偏旺/偏弱倾向；走'扶抑'路线——弱则补印比，强则疏食伤财官",
+      "personality_axis": "稳定、有方法论、能长期投入；走专业路径有先天优势",
+      "career_axis": "体制 / 标准化 / 专业资格 / 长期复利型岗位",
+      "wealth_axis": "稳健积累型为主；忌投机",
+      "by_strength": {
+        "强": {
+          "favorable_categories": ["食伤", "财", "官杀"],
+          "favorable_summary": "身强需疏导：主动输出、商业化、承担更大责任",
+          "key_advice": "用食神/伤官把内在能力外化；不要躺在比劫印的舒适区"
+        },
+        "偏强": {
+          "favorable_categories": ["食伤", "财", "官杀"],
+          "favorable_summary": "略偏强，平衡为主；可以做扩张但要节奏",
+          "key_advice": "扩张前评估资源消耗，避免一次性把家底压上"
+        },
+        "中和": {
+          "favorable_categories": ["财", "官杀", "印"],
+          "favorable_summary": "均衡型；命局没有明显短板也没有明显长板",
+          "key_advice": "靠'勤+专业'积累；阶段运的影响相对放大"
+        },
+        "偏弱": {
+          "favorable_categories": ["比劫", "印"],
+          "favorable_summary": "需要资源/平台/学习加持；不宜单打独斗",
+          "key_advice": "找平台、找师傅、找资格证；先把'根'扎稳再谈扩张"
+        },
+        "弱": {
+          "favorable_categories": ["比劫", "印"],
+          "favorable_summary": "明显需要扶身；早期靠原生家庭/教育/师承度过",
+          "key_advice": "稳为主；不要在身弱阶段强行接大盘子"
+        }
+      }
+    }
+  },
+  "从格": {
+    "从旺": {
+      "core_logic": "命局支持五行极强、克泄极弱；顺其旺势而行",
+      "personality_axis": "极端独立、不服管、靠自己",
+      "career_axis": "适合自主创业、个人 IP、不进体制",
+      "key_advice": "顺势而为；不要硬走'平衡'路线"
+    },
+    "从财": {
+      "core_logic": "财星极旺、日主极弱；顺财而行",
+      "personality_axis": "对资源 / 商业极敏感",
+      "career_axis": "商业、投资、贸易、跨地域资源运作",
+      "key_advice": "顺财格喜财官运；忌神是印比"
+    },
+    "从官杀": {
+      "core_logic": "官杀极旺、日主极弱；顺官杀而行",
+      "personality_axis": "在权威 / 体制中如鱼得水",
+      "career_axis": "公职、军警、大企业管理层、合规",
+      "key_advice": "顺官杀格喜财官运；忌神是食伤"
+    },
+    "从儿": {
+      "core_logic": "食伤极旺、日主极弱；顺食伤而行",
+      "personality_axis": "才华横溢、表达力极强",
+      "career_axis": "创意、艺术、技术革新、自媒体",
+      "key_advice": "顺从儿格喜食伤财；忌神是印官"
+    }
+  }
+}

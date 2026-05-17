@@ -1,0 +1,34 @@
+{
+  "person_a": {
+    "name": "示例·甲",
+    "gender": "female",
+    "birth_datetime_local": "1990-01-01 12:00:00",
+    "location": {
+      "label": "Beijing, China",
+      "lat": 39.9042,
+      "lon": 116.4074,
+      "timezone": "Asia/Shanghai"
+    }
+  },
+  "person_b": {
+    "name": "示例·乙",
+    "gender": "male",
+    "birth_datetime_local": "1992-06-15 14:30:00",
+    "location": {
+      "label": "Shanghai, China",
+      "lat": 31.2304,
+      "lon": 121.4737,
+      "timezone": "Asia/Shanghai"
+    }
+  },
+  "relationship": {
+    "type": "未指定（请用户补充：恋人 / 夫妻 / 暧昧 / 朋友 / 家人 / 合伙人）",
+    "known_duration": "未指定",
+    "current_phase": "未指定",
+    "user_focus": "未指定（请用户补充关注的问题：相处卡点 / 关系走向 / 为何被吸引等）"
+  },
+  "options": {
+    "house_system": "Placidus",
+    "zodiac_type": "Tropical"
+  }
+}

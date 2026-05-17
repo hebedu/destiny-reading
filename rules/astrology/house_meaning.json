@@ -1,0 +1,15 @@
+{
+  "$schema_note": "12 宫位语义。Layer 2 按 facts.planet_positions[*].house 查这张表，结合行星语义生成断语。",
+  "1":  { "name": "命宫 / Self",          "domain": "外在形象、自我表达、出场方式", "keywords": ["外在", "形象", "出场"] },
+  "2":  { "name": "财帛宫 / Possessions", "domain": "金钱、价值观、个人资源", "keywords": ["收入", "价值观", "占有"] },
+  "3":  { "name": "兄弟宫 / Communication","domain": "信息、表达、短途、兄弟姐妹", "keywords": ["沟通", "学习", "短途"] },
+  "4":  { "name": "田宅宫 / Home",        "domain": "家庭、根、不动产、晚年", "keywords": ["家庭", "根", "私域"] },
+  "5":  { "name": "子女宫 / Creativity",  "domain": "创造、恋爱、子女、表演", "keywords": ["创意", "恋爱", "子女"] },
+  "6":  { "name": "奴仆宫 / Service",     "domain": "工作日常、健康、服务、宠物", "keywords": ["工作", "健康", "日常"] },
+  "7":  { "name": "夫妻宫 / Partnership", "domain": "婚姻、合伙、对手", "keywords": ["伴侣", "合伙", "他人"] },
+  "8":  { "name": "疾厄宫 / Transformation","domain": "共享资源、深度议题、性、生死", "keywords": ["共享资源", "深度", "转化"] },
+  "9":  { "name": "迁移宫 / Higher Mind", "domain": "远方、高等教育、信念、出版", "keywords": ["远方", "信念", "学术"] },
+  "10": { "name": "事业宫 / Career",      "domain": "事业成就、社会形象、权威", "keywords": ["事业", "社会身份", "权威"] },
+  "11": { "name": "福德宫 / Community",   "domain": "朋友、群体、理想、未来", "keywords": ["朋友", "理想", "群体"] },
+  "12": { "name": "玄秘宫 / Unconscious", "domain": "潜意识、孤独、灵性、隐藏", "keywords": ["潜意识", "灵性", "隐藏"] }
+}

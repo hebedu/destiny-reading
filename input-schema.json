@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "destiny-reading unified input",
+  "description": "统一输入包。Layer 0 收集后定稿，所有分支只从这份包派生。",
+  "type": "object",
+  "required": ["method", "birth_datetime", "calendar_type", "birthplace"],
+  "properties": {
+    "method": {
+      "type": "string",
+      "enum": ["bazi", "astrology", "synastry"],
+      "description": "用户选择的分析方法。bazi = 八字，astrology = 西方占星本命盘，synastry = 合盘（两人比较盘 + 组合盘）。method=synastry 时需要 person_b + relationship 字段。"
+    },
+    "name": {
+      "type": "string",
+      "description": "姓名，仅用于称呼，不参与排盘"
+    },
+    "gender": {
+      "type": ["string", "null"],
+      "enum": ["male", "female", null],
+      "description": "性别。bazi 分支必填（决定大运顺逆排）；astrology 分支可选"
+    },
+    "birth_datetime": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}([+-]\\d{2}:\\d{2}|Z)$",
+      "description": "公历出生时间，ISO 8601 含时区，例 1990-01-01T12:00:00+08:00"
+    },
+    "calendar_type": {
+      "type": "string",
+      "enum": ["solar"],
+      "description": "目前只接受公历输入。若用户给农历，需在 Layer 0 换算后再写入"
+    },
+    "birthplace": {
+      "type": "object",
+      "required": ["label"],
+      "properties": {
+        "label": { "type": "string", "description": "地名，至少到城市，例 '北京' / 'Beijing, China'" },
+        "lat":   { "type": "number", "description": "纬度。astrology 分支必填" },
+        "lon":   { "type": "number", "description": "经度。astrology 分支必填；bazi 分支用于真太阳时提示" },
+        "timezone": { "type": "string", "description": "IANA 时区名，例 'Asia/Shanghai'。astrology 分支必填" }
+      }
+    },
+    "question_focus": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["事业", "财运", "感情", "健康", "学业", "阶段运"] },
+      "description": "可选，用户特别关注的主题"
+    },
+    "bazi_options": {
+      "type": "object",
+      "description": "仅 method=bazi 时生效",
+      "properties": {
+        "dayun_count": { "type": "integer", "minimum": 1, "maximum": 12, "default": 8 },
+        "liunian_start_year": { "type": "integer", "description": "默认当前年减 2" },
+        "liunian_count": { "type": "integer", "minimum": 1, "maximum": 20, "default": 5 }
+      }
+    },
+    "astrology_options": {
+      "type": "object",
+      "description": "仅 method=astrology 时生效",
+      "properties": {
+        "house_system": { "type": "string", "default": "Placidus" },
+        "zodiac_type": { "type": "string", "enum": ["Tropical"], "default": "Tropical" }
+      }
+    },
+    "person_b": {
+      "type": "object",
+      "description": "仅 method=synastry 时必填。第二个人的信息，字段结构同顶层（name / gender / birth_datetime / calendar_type / birthplace）",
+      "properties": {
+        "name": { "type": "string" },
+        "gender": { "type": ["string", "null"], "enum": ["male", "female", null] },
+        "birth_datetime": { "type": "string" },
+        "calendar_type": { "type": "string", "enum": ["solar"] },
+        "birthplace": {
+          "type": "object",
+          "properties": {
+            "label": { "type": "string" },
+            "lat": { "type": "number" },
+            "lon": { "type": "number" },
+            "timezone": { "type": "string" }
+          }
+        }
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "description": "仅 method=synastry 时必填。关系上下文。",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "关系类型：恋人 / 夫妻 / 暧昧 / 朋友 / 家人 / 合伙人 / 其他"
+        },
+        "known_duration": {
+          "type": "string",
+          "description": "认识时长，例 '3 年'"
+        },
+        "current_phase": {
+          "type": "string",
+          "description": "当前阶段，例 '热恋'、'磨合期'、'同居'、'考虑结婚'、'分手讨论中'"
+        },
+        "single_party_inquiry": {
+          "type": "boolean",
+          "default": false,
+          "description": "是否只有来访者一方在场。true 时按'单方咨询'模式处理，不假装代对方说话"
+        },
+        "user_focus": {
+          "type": "string",
+          "description": "用户最想了解的问题"
+        }
+      }
+    }
+  }
+}

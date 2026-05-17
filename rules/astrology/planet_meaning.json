@@ -1,0 +1,73 @@
+{
+  "$schema_note": "行星语义查表。每个行星含 essence (本质) / personality / by_house_hint (落宫一般效应) / by_aspect_modifier (相位修饰). 给 Layer 2 解读用。",
+  "Sun": {
+    "zh": "太阳",
+    "essence": "核心自我、生命力方向、社会化身份",
+    "personality": "决定一个人'怎么定义自己是谁'。落在哪个星座 = 主体风格；落在哪宫 = 自我表现舞台",
+    "house_hint": "Sun 落第几宫，决定'自我能量主要花在哪个生活领域'",
+    "aspect_hint": "Sun 的相位反映自我整合的难易"
+  },
+  "Moon": {
+    "zh": "月亮",
+    "essence": "情绪反应、安全感、内在小孩、潜意识",
+    "personality": "决定情绪默认状态、面对压力时的本能反应、对'被照顾/照顾人'的态度",
+    "house_hint": "Moon 宫位 = '情绪安顿的场景'",
+    "aspect_hint": "Moon 与外行星硬相位 → 情绪起伏与外部世界长期博弈"
+  },
+  "Mercury": {
+    "zh": "水星",
+    "essence": "思维方式、语言、学习、信息处理",
+    "personality": "怎么想、怎么说话、对哪种信息密度敏感。逆行 = 信息处理偏内省/反复回看",
+    "house_hint": "Mercury 宫位 = '主要思考与表达的领域'",
+    "aspect_hint": "Mercury 与外行星 → 思维深度/扭曲程度的修饰"
+  },
+  "Venus": {
+    "zh": "金星",
+    "essence": "爱、价值观、审美、关系吸引模式",
+    "personality": "喜欢什么/被什么吸引/愿意为什么花钱与时间",
+    "house_hint": "Venus 宫位 = '关系与价值的主战场'",
+    "aspect_hint": "Venus-火星 = 欲望-行动；Venus-土星 = 关系中的责任与延迟满足"
+  },
+  "Mars": {
+    "zh": "火星",
+    "essence": "行动力、冲动、性能量、愤怒",
+    "personality": "想干一件事时是怎么冲的、怎么吵架、怎么承担风险",
+    "house_hint": "Mars 宫位 = '把冲劲花在哪'",
+    "aspect_hint": "Mars 硬相位 → 冲突点；柔相位 → 干脆利落的行动力"
+  },
+  "Jupiter": {
+    "zh": "木星",
+    "essence": "扩张、信念、机会、慷慨",
+    "personality": "相信什么、愿意往哪个方向放大、容易得到什么类型的运气",
+    "house_hint": "Jupiter 宫位 = '人生最容易得到放大与好运的领域'",
+    "aspect_hint": "Jupiter 与外行星合相 → 信念与现实的拉锯"
+  },
+  "Saturn": {
+    "zh": "土星",
+    "essence": "限制、责任、长期主义、恐惧",
+    "personality": "在哪方面会被反复打磨、什么事一定要慢工出细活",
+    "house_hint": "Saturn 宫位 = '人生最需要忍耐与积累的领域'",
+    "aspect_hint": "Saturn 硬相位 → 反复受挫但最终能立住的领域"
+  },
+  "Uranus": {
+    "zh": "天王星",
+    "essence": "变革、独立、突破、不可预测",
+    "personality": "在哪方面拒绝随大流、容易突然转向",
+    "house_hint": "Uranus 宫位 = '一生中会被打破常规重塑的领域'",
+    "aspect_hint": "Uranus 硬相位 → 突变事件 / 创新冲动"
+  },
+  "Neptune": {
+    "zh": "海王星",
+    "essence": "理想化、灵性、迷失、想象力",
+    "personality": "在哪方面容易'看不清/产生美化滤镜'",
+    "house_hint": "Neptune 宫位 = '一生中梦想与迷雾交织的领域'",
+    "aspect_hint": "Neptune 硬相位 → 现实与幻想的反复矫正"
+  },
+  "Pluto": {
+    "zh": "冥王星",
+    "essence": "深层转化、权力、生死、强迫性议题",
+    "personality": "在哪方面会经历深层的'死与重生'",
+    "house_hint": "Pluto 宫位 = '人生深刻议题所在'",
+    "aspect_hint": "Pluto 硬相位 → 不可避免的转化型事件"
+  }
+}
